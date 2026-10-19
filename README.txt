@@ -1,4 +1,4 @@
-QUIZ FERROVIAIRE — V9
+QUIZ FERROVIAIRE — V10
 =====================
 
 Cette version ajoute un véritable espace « Cours & fiches » construit à partir des supports fournis.
@@ -38,3 +38,6 @@ Ouvre index.html dans un navigateur récent.
 Aucune installation n’est nécessaire.
 
 Les résultats et l’historique restent enregistrés localement dans le navigateur.
+
+
+Nouveautés V10 : niveaux de difficulté, questions pièges, explications approfondies, questions marquées ⭐, raccourcis clavier, meilleure ergonomie mobile/tablette, remise à zéro des statistiques, mode sombre.
