@@ -416,3 +416,246 @@ main {
 [data-bs-theme="dark"] .progress-chart text {
   fill: #9ca3af;
 }
+
+/* Page d'accueil */
+.landing-page {
+  background: #f4f6f9;
+}
+
+.landing-hero {
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #ffffff, #eef6ff);
+  border: 1px solid #dbe3ea;
+}
+
+.landing-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.landing-kicker {
+  color: #2563eb;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.landing-intro {
+  max-width: 720px;
+  color: #475569;
+  font-size: 1.05rem;
+}
+
+.landing-feature,
+.landing-support {
+  border: 1px solid #dbe3ea;
+}
+
+.landing-feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+[data-bs-theme="dark"] .landing-page {
+  background: #111827;
+}
+
+[data-bs-theme="dark"] .landing-hero {
+  background: linear-gradient(135deg, #1f2937, #172033);
+  border-color: #374151;
+}
+
+[data-bs-theme="dark"] .landing-intro {
+  color: #cbd5e1;
+}
+
+[data-bs-theme="dark"] .landing-feature,
+[data-bs-theme="dark"] .landing-support {
+  background: #1f2937 !important;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+/* Organisation des actions de la page de configuration du quiz. */
+.quiz-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quiz-actions-main .btn {
+  width: 100%;
+  min-height: 54px;
+  font-weight: 600;
+}
+
+.quiz-actions-group {
+  padding: 1rem;
+  border: 1px solid #dbe3ea;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+}
+
+.quiz-actions-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.quiz-actions-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.quiz-actions-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quiz-actions-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.quiz-actions-grid .btn {
+  min-height: 48px;
+}
+
+.quiz-actions-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+[data-bs-theme="dark"] .quiz-actions-group {
+  background: #172033;
+  border-color: #374151;
+}
+
+[data-bs-theme="dark"] .quiz-actions-title {
+  color: #cbd5e1;
+}
+
+@media (max-width: 767.98px) {
+  .quiz-actions-grid-3,
+  .quiz-actions-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-actions-footer {
+    justify-content: stretch;
+  }
+
+  .quiz-actions-footer .btn {
+    width: 100%;
+  }
+}
+
+/* Correction de l'alignement vertical des boutons d'action. */
+.quiz-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.25;
+}
+
+/* =========================================================
+   V15 — Nouvelles fonctions de révision et confort mobile
+   ========================================================= */
+
+.resume-card-inner,
+.daily-card-inner,
+.automatic-review-inner {
+  height: 100%;
+}
+
+.setup-enhancements > [id$="Card"]:empty {
+  display: none;
+}
+
+.result-analysis-block {
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+  background: var(--bs-tertiary-bg);
+}
+
+.result-analysis-block ul {
+  padding-left: 1.2rem;
+}
+
+.course-tools {
+  background: var(--bs-body-bg);
+}
+
+.data-tools {
+  background: var(--bs-tertiary-bg) !important;
+}
+
+/* Les boutons principaux gardent une hauteur homogène et un centrage vertical. */
+.quiz-actions .btn,
+.data-tools .btn,
+.setup-enhancements .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.25;
+}
+
+/* Confort sur téléphone : les actions deviennent facilement accessibles au doigt. */
+@media (max-width: 576px) {
+  .setup-enhancements .btn,
+  .data-tools .btn,
+  .quiz-actions .btn {
+    min-height: 44px;
+  }
+
+  #quiz .answer-btn {
+    min-height: 52px;
+    white-space: normal;
+    text-align: left;
+  }
+
+  #quiz .card-body {
+    padding: 1rem !important;
+  }
+
+  #quiz #question {
+    font-size: 1.15rem;
+    line-height: 1.45;
+  }
+
+  #quiz .d-flex.flex-wrap.gap-3.mt-4 .btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* Impression : on garde uniquement le contenu utile des fiches. */
+@media print {
+  .navbar,
+  #themeToggle,
+  #printSheetsBtn,
+  #printCourseBtn,
+  .course-page > .d-flex,
+  .course-tools,
+  footer,
+  button,
+  .btn {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .course-page,
+  .revision-reading,
+  .revision-sheet {
+    max-width: none !important;
+    box-shadow: none !important;
+  }
+
+  .card {
+    break-inside: avoid;
+  }
+}

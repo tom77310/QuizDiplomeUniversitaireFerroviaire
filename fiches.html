@@ -39,14 +39,23 @@
             Des fiches courtes, séparées des cours détaillés.
           </p>
         </div>
-        <a class="btn btn-outline-secondary" href="index.html"
-          >← Retour au quiz</a
-        >
+        <div class="d-flex gap-2 flex-wrap">
+          <button
+            id="printSheetsBtn"
+            class="btn btn-outline-success"
+            type="button"
+          >
+            🖨️ Imprimer / PDF</button
+          ><a class="btn btn-outline-secondary" href="quiz.html"
+            >← Retour au quiz</a
+          ><a class="btn btn-outline-primary" href="index.html">🏠 Accueil</a>
+        </div>
       </div>
       <div id="sheetHome"></div>
       <div id="sheetDetail" class="d-none"></div>
     </main>
     <script src="course.js"></script>
+    <script src="enhancements.js"></script>
     <script>
       function esc(v) {
         return String(v).replace(
