@@ -12,7 +12,10 @@
  * - recherche dans les cours ;
  * - confort mobile ;
  * - export / import des données locales ;
- * - impression propre des fiches ;
+ * - impression propre des cours et des fiches ;
+ * - suppression individuelle des sessions ;
+ * - mélange intelligent selon la récence des questions ;
+ * - retour rapide en haut sur les pages longues ;
  * - bilan détaillé en fin de session.
  */
 
@@ -597,8 +600,22 @@ function initPrintButton() {
   const sheetButton = enhancement$("#printSheetsBtn");
   if (sheetButton) sheetButton.onclick = () => window.print();
 
-  const courseButton = enhancement$("#printCourseBtn");
-  if (courseButton) courseButton.onclick = () => window.print();
+  // Le bouton du cours est créé dynamiquement par openCourse().
+  // La gestion directe ici pouvait donc être initialisée avant sa création.
+  // Le bouton utilise maintenant onclick="window.print()" dans cours.html.
+}
+
+/* -----------------------------
+ * 9. Retour en haut
+ * ----------------------------- */
+function initBackToTop() {
+  const button = enhancement$("#backToTopBtn");
+  if (!button) return;
+  const update = () =>
+    button.classList.toggle("is-visible", window.scrollY > 500);
+  window.addEventListener("scroll", update, { passive: true });
+  button.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  update();
 }
 
 /* -----------------------------
@@ -608,6 +625,7 @@ function installEnhancements() {
   // Les outils généraux sont disponibles sur les pages concernées.
   initCourseSearch();
   initPrintButton();
+  initBackToTop();
 
   // Les fonctions de révision nécessitent la base QUESTIONS et le script principal.
   if (

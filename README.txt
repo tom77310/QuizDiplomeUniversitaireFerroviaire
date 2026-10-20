@@ -371,3 +371,17 @@ V17 — Corrections cours
 - Ajout d’un bouton « Imprimer le cours » lors de la consultation d’un cours.
 - L’impression conserve le contenu du cours et masque les éléments d’interface inutiles.
 - L’impression des fiches de révision reste disponible.
+
+
+V18 — Confort et gestion des révisions
+- Mélange intelligent des questions : les questions vues récemment sont moins prioritaires dans les nouvelles sessions générales.
+- Affichage du temps passé à la fin d'une session.
+- Suppression individuelle d'une session depuis l'historique, en plus de l'effacement complet.
+- Impression des cours et des fiches améliorée avec titre, date d'impression et mise en page adaptée au papier.
+- Ajout d'une recherche dans les fiches de révision.
+- Ajout d'un bouton « Retour en haut » sur les pages longues des cours et des fiches.
+- Conservation des fonctionnalités précédentes, notamment les questions marquées déjà existantes.
+
+
+V19 — Correction impression des cours
+- Correction du bouton « Imprimer le cours » : le bouton est généré dynamiquement lors de l’ouverture d’un cours et déclenche maintenant directement la boîte d’impression du navigateur.

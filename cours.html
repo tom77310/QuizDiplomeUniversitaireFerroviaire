@@ -68,6 +68,14 @@
       </div>
       <div id="courseHome"></div>
       <div id="courseDetail" class="d-none"></div>
+      <button
+        id="backToTopBtn"
+        class="back-to-top"
+        type="button"
+        aria-label="Retour en haut"
+      >
+        ↑
+      </button>
     </main>
     <script src="course.js"></script>
     <script src="enhancements.js"></script>
@@ -100,7 +108,7 @@
         );
         home.classList.add("d-none");
         detail.classList.remove("d-none");
-        detail.innerHTML = `<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"><div><h2 class="h3 mb-1">${c.icon} ${escapeHtmlLocal(c.title)}</h2><p class="text-secondary mb-0">${escapeHtmlLocal(c.subtitle)}</p></div><div class="d-flex gap-2 flex-wrap"><button id="printCourseBtn" class="btn btn-outline-success" type="button">🖨️ Imprimer le cours</button><button class="btn btn-outline-secondary" onclick="showCourseHome()">← Tous les cours</button></div></div><div class="course-reading">${c.sections.map((s, i) => `<section class="course-section card border mb-3"><div class="card-body"><h3 class="h5">${i + 1}. ${escapeHtmlLocal(s.title.replace(/^\d+\.\s*/, ""))}</h3><ul>${s.bullets.map((b) => `<li>${escapeHtmlLocal(b)}</li>`).join("")}</ul><div class="course-key"><strong>🎯 À retenir :</strong> ${escapeHtmlLocal(s.key)}</div></div></section>`).join("")}</div>`;
+        detail.innerHTML = `<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"><div><h2 class="h3 mb-1">${c.icon} ${escapeHtmlLocal(c.title)}</h2><p class="text-secondary mb-0">${escapeHtmlLocal(c.subtitle)}</p></div><div class="d-flex gap-2 flex-wrap"><button id="printCourseBtn" class="btn btn-outline-success" type="button" onclick="window.print()">🖨️ Imprimer le cours</button><button class="btn btn-outline-secondary" onclick="showCourseHome()">← Tous les cours</button></div></div><div class="print-meta"><strong>${escapeHtmlLocal(c.title)}</strong><span>Imprimé le ${new Date().toLocaleDateString("fr-FR")}</span></div><div class="course-reading">${c.sections.map((s, i) => `<section class="course-section card border mb-3"><div class="card-body"><h3 class="h5">${i + 1}. ${escapeHtmlLocal(s.title.replace(/^\d+\.\s*/, ""))}</h3><ul>${s.bullets.map((b) => `<li>${escapeHtmlLocal(b)}</li>`).join("")}</ul><div class="course-key"><strong>🎯 À retenir :</strong> ${escapeHtmlLocal(s.key)}</div></div></section>`).join("")}</div>`;
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
       function showCourseHome() {

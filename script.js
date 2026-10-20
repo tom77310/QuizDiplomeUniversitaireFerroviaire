@@ -76,6 +76,18 @@ function updateModeUI() {
     updateCountOptions();
   }
 }
+function smartShuffle(a) {
+  const stats =
+    typeof getQuestionStats === "function" ? getQuestionStats() : {};
+  return shuffle(a).sort((a, b) => {
+    const sa = stats[String(a.id)],
+      sb = stats[String(b.id)];
+    const ta = sa?.lastDate ? new Date(sa.lastDate).getTime() : 0,
+      tb = sb?.lastDate ? new Date(sb.lastDate).getTime() : 0;
+    if (ta !== tb) return ta - tb;
+    return 0;
+  });
+}
 function startQuiz() {
   clearInterval(timer);
   targetedMode = false;
@@ -89,7 +101,7 @@ function startQuiz() {
       : t === "all"
         ? [...QUESTIONS]
         : QUESTIONS.filter((q) => q.theme === t);
-  pool = shuffle(pool);
+  pool = smartShuffle(pool);
   quizQuestions = c === "all" ? pool : pool.slice(0, Number(c));
   if (!quizQuestions.length) {
     alert("Aucune question disponible pour cette sélection.");
@@ -442,6 +454,9 @@ function saveSession(timeUp = false) {
 function finish(timeUp = false) {
   clearInterval(timer);
   saveSession(timeUp);
+  if ($("#resultDuration"))
+    $("#resultDuration").textContent =
+      `Temps passé : ${formatDuration(sessionElapsed)}`;
   $("#quiz").classList.add("d-none");
   $("#result").classList.remove("d-none");
   const p = Math.round((score / quizQuestions.length) * 100);
@@ -804,7 +819,7 @@ function showHistory() {
     sum += s.percent;
     modeCounts[s.mode] = (modeCounts[s.mode] || 0) + 1;
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${formatDate(s.date)}</td><td>${s.mode === "simulation" ? '<span class="badge text-bg-success">Simulation</span>' : s.mode === "exam" ? '<span class="badge text-bg-dark">Examen</span>' : '<span class="badge text-bg-primary">Révision</span>'}</td><td>${escapeHtml(s.theme)}</td><td class="fw-semibold">${s.score}/${s.count} (${s.percent}%)</td><td>${formatDuration(s.duration)}${s.timeUp ? " ⏱" : ""}</td><td>${s.errors}</td>`;
+    tr.innerHTML = `<td>${formatDate(s.date)}</td><td>${s.mode === "simulation" ? '<span class="badge text-bg-success">Simulation</span>' : s.mode === "exam" ? '<span class="badge text-bg-dark">Examen</span>' : '<span class="badge text-bg-primary">Révision</span>'}</td><td>${escapeHtml(s.theme)}</td><td class="fw-semibold">${s.score}/${s.count} (${s.percent}%)</td><td>${formatDuration(s.duration)}${s.timeUp ? " ⏱" : ""}</td><td>${s.errors}</td><td><button class="btn btn-sm btn-outline-danger delete-session-btn" data-session-id="${s.id}" type="button">Supprimer</button></td>`;
     body.appendChild(tr);
     if (
       s.theme !== "Tous les thèmes" &&
@@ -882,7 +897,7 @@ function showHistory() {
     `<div class="col-6 col-md-3"><div class="border rounded p-2 text-center"><div class="small text-secondary">Sessions</div><strong>${total}</strong></div></div><div class="col-6 col-md-3"><div class="border rounded p-2 text-center"><div class="small text-secondary">Moyenne</div><strong>${total ? Math.round(sum / total) : 0}%</strong></div></div><div class="col-6 col-md-3"><div class="border rounded p-2 text-center"><div class="small text-secondary">Meilleur score</div><strong>${best}%</strong></div></div><div class="col-6 col-md-3"><div class="border rounded p-2 text-center"><div class="small text-secondary">Examens</div><strong>${(modeCounts.exam || 0) + (modeCounts.simulation || 0)}</strong></div></div>`;
   if (!sessions.length) {
     body.innerHTML =
-      '<tr><td colspan="6" class="text-center text-secondary py-4">Aucune session ne correspond aux filtres sélectionnés.</td></tr>';
+      '<tr><td colspan="7" class="text-center text-secondary py-4">Aucune session ne correspond aux filtres sélectionnés.</td></tr>';
     progressBody.innerHTML =
       '<tr><td colspan="7" class="text-center text-secondary py-4">Aucune progression disponible pour cette sélection.</td></tr>';
     masteryBody.innerHTML =
@@ -926,6 +941,16 @@ function renderProgressChart(sessions) {
   });
   svg += "</svg>";
   el.innerHTML = svg;
+}
+function deleteSession(id) {
+  const sessions = JSON.parse(localStorage.getItem("quizSessions") || "[]");
+  const next = sessions.filter((s) => String(s.id) !== String(id));
+  if (next.length === sessions.length) return;
+  if (confirm("Supprimer cette session de l’historique ?")) {
+    localStorage.setItem("quizSessions", JSON.stringify(next));
+    showHistory();
+    updateTargetInfo();
+  }
 }
 function clearHistory() {
   if (confirm("Effacer tout l’historique des sessions ?")) {
@@ -992,6 +1017,10 @@ $("#clearHistoryBtn").onclick = clearHistory;
 $("#historyModeFilter").onchange = showHistory;
 $("#historyThemeFilter").onchange = showHistory;
 $("#historyPeriodFilter").onchange = showHistory;
+$("#historyBody").onclick = (e) => {
+  const btn = e.target.closest(".delete-session-btn");
+  if (btn) deleteSession(btn.dataset.sessionId);
+};
 populateThemes();
 updateModeUI();
 applyTheme();

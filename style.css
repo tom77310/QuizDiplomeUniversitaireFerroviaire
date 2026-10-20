@@ -629,13 +629,46 @@ main {
   }
 }
 
-/* Impression : on garde uniquement le contenu utile des fiches. */
+/* Retour rapide en haut des pages longues. */
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #fff;
+  font-size: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    visibility 0.2s;
+  z-index: 1050;
+}
+.back-to-top.is-visible {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.print-meta {
+  display: none;
+}
+
+/* Impression : on garde uniquement le contenu utile des cours et fiches. */
 @media print {
   .navbar,
   #themeToggle,
   #printSheetsBtn,
   #printCourseBtn,
+  #sheetSearchWrap,
   .course-page > .d-flex,
+  #sheetSearchWrap,
   .course-tools,
   footer,
   button,
@@ -655,7 +688,32 @@ main {
     box-shadow: none !important;
   }
 
+  @page {
+    margin: 1.5cm;
+  }
+
+  .print-meta {
+    display: flex !important;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #999;
+    font-size: 0.9rem;
+  }
+
   .card {
     break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+  li,
+  p {
+    orphans: 3;
+    widows: 3;
   }
 }
