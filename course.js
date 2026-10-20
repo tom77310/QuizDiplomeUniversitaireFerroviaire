@@ -1,7 +1,3 @@
-/* =========================================================
-   DONNÉES DU COURS
-   ========================================================= */
-
 const COURSE = [
   {
     id: "securite",
@@ -22,7 +18,6 @@ const COURSE = [
         ],
         key: "À mémoriser dans cet ordre : heurt/souffle — électrique — chute — matières dangereuses — électromagnétique.",
       },
-
       {
         title: "2. Les facteurs aggravants",
         bullets: [
@@ -31,7 +26,6 @@ const COURSE = [
         ],
         key: "La fatigue n’est donc pas un risque majeur en elle-même dans cette liste : c’est un facteur aggravant.",
       },
-
       {
         title: "3. Principes à respecter",
         bullets: [
@@ -41,7 +35,6 @@ const COURSE = [
         ],
         key: "Une voie ne doit jamais être considérée comme sûre parce qu’aucun train n’est visible.",
       },
-
       {
         title: "4. Obligations, interdictions et tenue",
         bullets: [
@@ -58,7 +51,6 @@ const COURSE = [
       },
     ],
   },
-
   {
     id: "cheminement",
     icon: "🚶",
@@ -75,7 +67,6 @@ const COURSE = [
         ],
         key: "Premier réflexe : ne pas engager la zone dangereuse.",
       },
-
       {
         title: "2. Qu’est-ce que la zone dangereuse ?",
         bullets: [
@@ -86,7 +77,6 @@ const COURSE = [
         ],
         key: "≤ 40 km/h → 1,25 m de distance à respecter par rapport à la zone dangereuse.",
       },
-
       {
         title: "3. Cheminer sur les pistes",
         bullets: [
@@ -98,7 +88,6 @@ const COURSE = [
         ],
         key: "Piste aménagée = itinéraire prévu pour rester hors de la zone dangereuse.",
       },
-
       {
         title: "4. Délai de visibilité pour traverser",
         bullets: [
@@ -110,7 +99,6 @@ const COURSE = [
         ],
         key: "10 s → 1–2 voies ; 15 s → 3–4 voies ; 20 s → 5–6 voies.",
       },
-
       {
         title: "5. Traverser une voie occupée",
         bullets: [
@@ -124,7 +112,6 @@ const COURSE = [
       },
     ],
   },
-
   {
     id: "electrique",
     icon: "⚡",
@@ -142,7 +129,6 @@ const COURSE = [
         ],
         key: "C0 → renouvellement tous les 3 ans.",
       },
-
       {
         title: "2. Contact et électrisation",
         bullets: [
@@ -153,7 +139,6 @@ const COURSE = [
         ],
         key: "Pas besoin de toucher : à haute tension, un amorçage d’arc peut se produire à distance.",
       },
-
       {
         title: "3. Zones à risques électriques",
         bullets: [
@@ -163,7 +148,6 @@ const COURSE = [
         ],
         key: "Pour les valeurs de distances et les conditions d’accès aux zones, se référer au tableau exact présenté dans le cours.",
       },
-
       {
         title: "4. Interdictions et prévention",
         bullets: [
@@ -177,7 +161,6 @@ const COURSE = [
         ],
         key: "Conducteur tombé = ne pas toucher + s’éloigner + empêcher l’approche + aviser ; dans le gabarit = obstacle inopiné.",
       },
-
       {
         title: "5. Autres précautions présentées",
         bullets: [
@@ -188,7 +171,6 @@ const COURSE = [
       },
     ],
   },
-
   {
     id: "bases-ca2p",
     icon: "🚂",
@@ -210,7 +192,6 @@ const COURSE = [
         ],
         key: "Valeurs à retenir : CG = 5 bar ; surcharge = 5,4 bar ; verrouillage RC = 0,2 bar.",
       },
-
       {
         title: "KVB et VACMA",
         bullets: [
@@ -219,7 +200,6 @@ const COURSE = [
         ],
         key: "KVB = paramètres du train ; VACMA = contrôle de la vigilance/conscience du conducteur.",
       },
-
       {
         title: "Signalisation et cantonnement",
         bullets: [
@@ -232,7 +212,6 @@ const COURSE = [
       },
     ],
   },
-
   {
     id: "histoire",
     icon: "📜",
@@ -252,7 +231,6 @@ const COURSE = [
         ],
         key: "Évolution : ornières → bois → fer → rails.",
       },
-
       {
         title: "2. Premiers chemins de fer et moteur",
         bullets: [
@@ -264,7 +242,6 @@ const COURSE = [
         ],
         key: "James Watt → amélioration de la vapeur ; Trevithick 1804 → premier succès présenté ; Evans 1812 → vision d’un réseau longue distance.",
       },
-
       {
         title: "3. Les débuts en France et les gains de temps",
         bullets: [
@@ -276,7 +253,6 @@ const COURSE = [
         ],
         key: "À retenir : 1822 Saint-Étienne–Andrézieux ; 1825 Stockton–Darlington ; 1878 plan Freycinet.",
       },
-
       {
         title: "4. Les rails",
         bullets: [
@@ -289,7 +265,6 @@ const COURSE = [
         ],
         key: "Rail = barre d’acier profilée ; deux files + traverses = voie ferrée.",
       },
-
       {
         title: "5. Traction à vapeur",
         bullets: [
@@ -301,7 +276,6 @@ const COURSE = [
         ],
         key: "Locomotive à vapeur : véhicule roulant + foyer/chaudière + mécanisme à vapeur ; tender pour eau et combustible.",
       },
-
       {
         title: "6. Traction électrique",
         bullets: [
@@ -313,7 +287,6 @@ const COURSE = [
         ],
         key: "Deux grandes valeurs à connaître dans cette vidéo : 1 500 V continu et 25 kV alternatif.",
       },
-
       {
         title: "7. Caténaire et matériel roulant",
         bullets: [
@@ -325,7 +298,6 @@ const COURSE = [
         ],
         key: "Essieu = roues solidaires ; bogie = chariot portant les essieux et s’orientant dans les courbes.",
       },
-
       {
         title: "8. Quelques grandes dates affichées",
         bullets: [
@@ -337,7 +309,6 @@ const COURSE = [
         ],
         key: "À retenir : 1937/1938, 1955, 1975 et 1981.",
       },
-
       {
         title: "9. Grandes dates — accidents et évolution",
         bullets: [
@@ -348,7 +319,6 @@ const COURSE = [
         ],
         key: "Ces dates complètent la chronologie jusqu’à 2000.",
       },
-
       {
         title: "10. La sécurité",
         bullets: [
@@ -362,11 +332,6 @@ const COURSE = [
   },
 ];
 
-
-/* =========================================================
-   FICHES DE RÉVISION
-   ========================================================= */
-
 const REVISION_SHEETS = [
   {
     id: "essentiels-securite",
@@ -379,7 +344,6 @@ const REVISION_SHEETS = [
       "EPI obligatoires ; tenue adaptée ; ne pas gêner sa vision.",
     ],
   },
-
   {
     id: "essentiels-voies",
     icon: "🚶",
@@ -391,7 +355,6 @@ const REVISION_SHEETS = [
       "Jamais sous un véhicule ni entre deux véhicules accouplés.",
     ],
   },
-
   {
     id: "essentiels-electrique",
     icon: "⚡",
@@ -404,7 +367,6 @@ const REVISION_SHEETS = [
       "Ne pas toucher les supports caténaires inutilement, même avec un objet métallique.",
     ],
   },
-
   {
     id: "essentiels-technique",
     icon: "🚂",
@@ -417,7 +379,6 @@ const REVISION_SHEETS = [
       "VACMA : état de conscience du conducteur.",
     ],
   },
-
   {
     id: "essentiels-histoire",
     icon: "📜",
@@ -433,105 +394,29 @@ const REVISION_SHEETS = [
   },
 ];
 
-
-/* =========================================================
-   AFFICHAGE DU COURS ET DES FICHES
-   ========================================================= */
-
 function renderCourse() {
   const cards = document.getElementById("courseCards");
   const sheets = document.getElementById("revisionSheetCards");
-
   if (!cards || !sheets) return;
-
-  /* ---------- Cartes des cours ---------- */
-
   cards.innerHTML = COURSE.map(
     (c) => `
-      <div class="col-12 col-lg-6">
-        <div class="card h-100 course-card">
-          <div class="card-body">
-
-            <div class="d-flex gap-3 align-items-start">
-              <div class="course-icon">${c.icon}</div>
-
-              <div class="flex-grow-1">
-                <h3 class="h5 mb-1">
-                  ${escapeHtml(c.title)}
-                </h3>
-
-                <p class="text-secondary small mb-2">
-                  ${escapeHtml(c.subtitle)}
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-3">
-              ${c.sections
-                .map(
-                  (s) => `
-                    <div class="course-section">
-                      <h4 class="h6">
-                        ${escapeHtml(s.title)}
-                      </h4>
-
-                      <ul>
-                        ${s.bullets
-                          .map((b) => `<li>${escapeHtml(b)}</li>`)
-                          .join("")}
-                      </ul>
-
-                      <div class="course-key">
-                        <strong>
-                          🎯 ${escapeHtml(s.key)}
-                        </strong>
-                      </div>
-                    </div>
-                  `,
-                )
-                .join("")}
-            </div>
-
+    <div class="col-12 col-lg-6">
+      <div class="card h-100 course-card">
+        <div class="card-body">
+          <div class="d-flex gap-3 align-items-start">
+            <div class="course-icon">${c.icon}</div>
+            <div class="flex-grow-1"><h3 class="h5 mb-1">${escapeHtml(c.title)}</h3><p class="text-secondary small mb-2">${escapeHtml(c.subtitle)}</p></div>
           </div>
+          <div class="mt-3">${c.sections.map((s) => `<div class="course-section"><h4 class="h6">${escapeHtml(s.title)}</h4><ul>${s.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul><div class="course-key"><strong>🎯 ${escapeHtml(s.key)}</strong></div></div>`).join("")}</div>
         </div>
       </div>
-    `,
+    </div>`,
   ).join("");
-
-
-  /* ---------- Fiches de révision ---------- */
-
   sheets.innerHTML = REVISION_SHEETS.map(
-    (s) => `
-      <div class="col-12 col-md-6">
-        <div class="revision-sheet">
-
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="course-icon small">
-              ${s.icon}
-            </span>
-
-            <h4 class="h6 mb-0">
-              ${escapeHtml(s.title)}
-            </h4>
-          </div>
-
-          <ul class="mb-0">
-            ${s.points
-              .map((p) => `<li>${escapeHtml(p)}</li>`)
-              .join("")}
-          </ul>
-
-        </div>
-      </div>
-    `,
+    (s) =>
+      `<div class="col-12 col-md-6"><div class="revision-sheet"><div class="d-flex align-items-center gap-2 mb-2"><span class="course-icon small">${s.icon}</span><h4 class="h6 mb-0">${escapeHtml(s.title)}</h4></div><ul class="mb-0">${s.points.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul></div></div>`,
   ).join("");
 }
-
-
-/* =========================================================
-   BADGES
-   ========================================================= */
 
 const BADGES = [
   {
@@ -541,7 +426,6 @@ const BADGES = [
     desc: "Terminer un premier quiz.",
     ok: (s) => s.length >= 1,
   },
-
   {
     id: "perfect",
     icon: "⭐",
@@ -549,7 +433,6 @@ const BADGES = [
     desc: "Obtenir 100 % sur une session.",
     ok: (s) => s.some((x) => x.percent === 100),
   },
-
   {
     id: "five",
     icon: "📖",
@@ -557,16 +440,13 @@ const BADGES = [
     desc: "Terminer 5 sessions.",
     ok: (s) => s.length >= 5,
   },
-
   {
     id: "sim3",
     icon: "🚂",
     title: "Conducteur d’essai",
     desc: "Terminer 3 simulations.",
-    ok: (s) =>
-      s.filter((x) => x.mode === "simulation").length >= 3,
+    ok: (s) => s.filter((x) => x.mode === "simulation").length >= 3,
   },
-
   {
     id: "master10",
     icon: "🧠",
@@ -574,7 +454,6 @@ const BADGES = [
     desc: "Avoir 10 questions maîtrisées.",
     ok: () => {
       const st = getQuestionStats();
-
       return (
         Object.values(st).filter(
           (x) => masteryStatus(x).class === "mastery-green",
@@ -583,82 +462,25 @@ const BADGES = [
     },
   },
 ];
-
-
-/* =========================================================
-   AFFICHAGE DES BADGES
-   ========================================================= */
-
 function renderBadges() {
-  const el = document.getElementById("badgesHome");
-  const count = document.getElementById("badgeCount");
-
+  const el = document.getElementById("badgesHome"),
+    count = document.getElementById("badgeCount");
   if (!el) return;
-
-  const sessions = JSON.parse(
-    localStorage.getItem("quizSessions") || "[]",
-  );
-
+  const sessions = JSON.parse(localStorage.getItem("quizSessions") || "[]");
   let earned = 0;
-
   el.innerHTML = BADGES.map((b) => {
     const ok = b.ok(sessions);
-
     if (ok) earned++;
-
-    return `
-      <div class="badge-progress ${ok ? "earned" : "locked"}">
-
-        <div class="badge-symbol">
-          ${b.icon}
-        </div>
-
-        <div>
-          <strong>
-            ${escapeHtml(b.title)}
-          </strong>
-
-          <div class="small">
-            ${escapeHtml(b.desc)}
-          </div>
-        </div>
-
-        ${
-          ok
-            ? '<span class="badge text-bg-success ms-auto">Obtenu</span>'
-            : '<span class="badge text-bg-light border ms-auto">À débloquer</span>'
-        }
-
-      </div>
-    `;
+    return `<div class="badge-progress ${ok ? "earned" : "locked"}"><div class="badge-symbol">${b.icon}</div><div><strong>${escapeHtml(b.title)}</strong><div class="small">${escapeHtml(b.desc)}</div></div>${ok ? '<span class="badge text-bg-success ms-auto">Obtenu</span>' : '<span class="badge text-bg-light border ms-auto">À débloquer</span>'}</div>`;
   }).join("");
-
-  if (count) {
-    count.textContent = `${earned}/${BADGES.length} obtenus`;
-  }
+  if (count) count.textContent = `${earned}/${BADGES.length} obtenus`;
 }
-
-
-/* =========================================================
-   AFFICHAGE DU COURS
-   ========================================================= */
-
 function showCourse() {
   clearInterval(timer);
-
   targetedMode = false;
-
-  [
-    "setup",
-    "quiz",
-    "result",
-    "targeted",
-    "history",
-  ].forEach((id) => {
-    document.getElementById(id)?.classList.add("d-none");
-  });
-
+  ["setup", "quiz", "result", "targeted", "history"].forEach((id) =>
+    document.getElementById(id)?.classList.add("d-none"),
+  );
   document.getElementById("course")?.classList.remove("d-none");
-
   renderCourse();
 }

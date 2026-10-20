@@ -1,26 +1,4 @@
-// ============================================================
-// BANQUE DE QUESTIONS
-// ============================================================
-// Chaque question contient :
-// - id          : identifiant unique de la question
-// - difficulty  : niveau de difficulté (easy / medium / hard)
-// - theme       : thème auquel la question appartient
-// - type        : single / multiple / truefalse
-// - question    : énoncé de la question
-// - answers     : propositions de réponse
-// - correct     : index des bonnes réponses dans le tableau answers
-// - explanation : explication affichée après validation
-//
-// Certains éléments peuvent également être présents :
-// - trap       : indique une question piège
-// - trapNote   : explication du piège
-// ============================================================
-
 const QUESTIONS = [
-  // ==========================================================
-  // EC21-1 — SÉCURITÉ GÉNÉRALE
-  // ==========================================================
-
   {
     id: 1,
     difficulty: "easy",
@@ -38,7 +16,6 @@ const QUESTIONS = [
     explanation:
       "Les cinq risques majeurs sont le heurt/souffle, le risque électrique, le risque de chute, le risque lié aux matières dangereuses et le risque électromagnétique.",
   },
-
   {
     id: 2,
     difficulty: "easy",
@@ -55,7 +32,6 @@ const QUESTIONS = [
     explanation:
       "La fatigue est identifiée comme un facteur aggravant du risque.",
   },
-
   {
     id: 3,
     difficulty: "easy",
@@ -72,7 +48,6 @@ const QUESTIONS = [
     explanation:
       "Une voie doit être considérée comme pouvant être parcourue par des véhicules ferroviaires.",
   },
-
   {
     id: 4,
     difficulty: "easy",
@@ -89,7 +64,6 @@ const QUESTIONS = [
     explanation:
       "Une circulation peut survenir à tout moment et dans l’un ou l’autre sens.",
   },
-
   {
     id: 5,
     difficulty: "easy",
@@ -106,7 +80,6 @@ const QUESTIONS = [
     explanation:
       "La priorité est d’assurer sa propre sécurité et celle des autres.",
   },
-
   {
     id: 6,
     difficulty: "easy",
@@ -122,7 +95,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "Le port des EPI est obligatoire.",
   },
-
   {
     id: 7,
     difficulty: "medium",
@@ -143,7 +115,6 @@ const QUESTIONS = [
     explanation:
       "Le casque audio, les tenues gênant la visibilité et les déplacements sans nécessité de service sont identifiés comme interdits.",
   },
-
   {
     id: 8,
     difficulty: "easy",
@@ -160,7 +131,6 @@ const QUESTIONS = [
     explanation:
       "Les tenues amples sont interdites dans les emprises ferroviaires.",
   },
-
   {
     id: 9,
     difficulty: "easy",
@@ -177,11 +147,6 @@ const QUESTIONS = [
     explanation:
       "Les chaussures doivent être fermées, antidérapantes et de sécurité.",
   },
-
-  // ==========================================================
-  // EC21-2 — CHEMINEMENT
-  // ==========================================================
-
   {
     id: 10,
     difficulty: "easy",
@@ -199,7 +164,6 @@ const QUESTIONS = [
     explanation:
       "Le premier principe est de ne pas engager la zone dangereuse.",
   },
-
   {
     id: 11,
     difficulty: "medium",
@@ -217,7 +181,6 @@ const QUESTIONS = [
     explanation:
       "La zone dangereuse correspond notamment à l’exposition aux risques de heurt, d’accrochage ou d’effet de souffle.",
   },
-
   {
     id: 12,
     difficulty: "easy",
@@ -233,7 +196,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "Le stationnement dans la zone dangereuse est interdit.",
   },
-
   {
     id: 13,
     difficulty: "easy",
@@ -245,7 +207,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "La distance minimale est de 1,25 mètre.",
   },
-
   {
     id: 14,
     difficulty: "easy",
@@ -261,11 +222,6 @@ const QUESTIONS = [
     explanation:
       "Faux : toute voie doit être considérée comme pouvant être parcourue par des véhicules ferroviaires.",
   },
-
-  // ==========================================================
-  // EC21-2 — RISQUES ÉLECTRIQUES
-  // ==========================================================
-
   {
     id: 15,
     difficulty: "easy",
@@ -283,7 +239,6 @@ const QUESTIONS = [
     explanation:
       "Le conducteur évolue quotidiennement dans un environnement électrique.",
   },
-
   {
     id: 16,
     difficulty: "easy",
@@ -300,7 +255,6 @@ const QUESTIONS = [
     explanation:
       "L’habilitation électrique C0 doit être renouvelée tous les trois ans.",
   },
-
   {
     id: 17,
     difficulty: "medium",
@@ -317,7 +271,6 @@ const QUESTIONS = [
     explanation:
       "Un contact avec une pièce nue sous tension peut provoquer une électrisation ou une électrocution.",
   },
-
   {
     id: 18,
     difficulty: "medium",
@@ -337,7 +290,6 @@ const QUESTIONS = [
     explanation:
       "Un amorçage peut se produire sans contact direct lorsqu’on s’approche trop près d’une partie sous tension.",
   },
-
   {
     id: 19,
     difficulty: "medium",
@@ -355,7 +307,6 @@ const QUESTIONS = [
     explanation:
       "Monter sur un poteau supportant des conducteurs électriques est interdit.",
   },
-
   {
     id: 20,
     difficulty: "medium",
@@ -373,7 +324,6 @@ const QUESTIONS = [
     explanation:
       "Il ne faut pas toucher le conducteur et il faut empêcher les personnes de s’en approcher.",
   },
-
   {
     id: 21,
     difficulty: "medium",
@@ -390,7 +340,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "Il doit être considéré comme un obstacle inopiné.",
   },
-
   {
     id: 22,
     difficulty: "easy",
@@ -408,11 +357,6 @@ const QUESTIONS = [
     explanation:
       "Il ne faut pas toucher les supports caténaires, même avec un objet métallique.",
   },
-
-  // ==========================================================
-  // CA2P — SÉCURITÉ
-  // ==========================================================
-
   {
     id: 23,
     difficulty: "medium",
@@ -433,7 +377,6 @@ const QUESTIONS = [
     explanation:
       "les vêtements flottants, écharpes, cravates, écouteurs et téléphone parmi les éléments à éviter. Les chaussures fermées sont au contraire recommandées.",
   },
-
   {
     id: 24,
     difficulty: "medium",
@@ -449,11 +392,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "La procédure indiquée est PAS : Protéger, Alerter, Secourir.",
   },
-
-  // ==========================================================
-  // CA2P — RISQUE ÉLECTRIQUE
-  // ==========================================================
-
   {
     id: 25,
     difficulty: "hard",
@@ -465,7 +403,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "L’habilitation C0 permet l’entrée en zone 2.",
   },
-
   {
     id: 26,
     difficulty: "hard",
@@ -482,7 +419,6 @@ const QUESTIONS = [
     explanation:
       "Une attestation de mise hors tension de la caténaire remise en main propre est nécessaire.",
   },
-
   {
     id: 27,
     difficulty: "hard",
@@ -500,11 +436,6 @@ const QUESTIONS = [
     explanation:
       "Un ordre de coupure d’urgence doit comporter la mention de la coupure, les indications permettant de localiser la zone, le motif de la coupure et l’identification du demandeur.",
   },
-
-  // ==========================================================
-  // CA2P — SIGNALISATION
-  // ==========================================================
-
   {
     id: 28,
     difficulty: "easy",
@@ -520,11 +451,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "En double voie, un train roule normalement à gauche.",
   },
-
-  // ==========================================================
-  // CA2P — CANTONNEMENT
-  // ==========================================================
-
   {
     id: 29,
     difficulty: "easy",
@@ -535,7 +461,6 @@ const QUESTIONS = [
     correct: [0, 1, 2, 3],
     explanation: "BAL, BAPR, BM et cantonnement téléphonique.",
   },
-
   {
     id: 30,
     difficulty: "medium",
@@ -553,7 +478,6 @@ const QUESTIONS = [
     explanation:
       "La faible adhérence augmente les distances de freinage et nécessite donc un cantonnement.",
   },
-
   {
     id: 31,
     difficulty: "medium",
@@ -569,11 +493,6 @@ const QUESTIONS = [
     explanation:
       "2 800 m en principe, avec une possibilité exceptionnelle d’atteindre 3 000 m.",
   },
-
-  // ==========================================================
-  // CA2P — SIGNALISATION
-  // ==========================================================
-
   {
     id: 32,
     difficulty: "easy",
@@ -591,11 +510,6 @@ const QUESTIONS = [
     explanation:
       "Une croix de Saint-André permet de repérer un signal qui n’est pas en service ou qui est annulé.",
   },
-
-  // ==========================================================
-  // CA2P — FREIN
-  // ==========================================================
-
   {
     id: 33,
     difficulty: "medium",
@@ -612,7 +526,6 @@ const QUESTIONS = [
     explanation:
       "Les essais concernés sont l’essai complet, l’essai partiel, l’essai de continuité et l’essai de raccordement.",
   },
-
   {
     id: 34,
     difficulty: "hard",
@@ -629,7 +542,6 @@ const QUESTIONS = [
     explanation:
       "Un essai complet vérifie notamment l’étanchéité et la continuité de la CG et le bon fonctionnement des freins au serrage et au desserrage.",
   },
-
   {
     id: 35,
     difficulty: "easy",
@@ -641,11 +553,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "La pression de régime de la CG est de 5 bars.",
   },
-
-  // ==========================================================
-  // CA2P — KVB
-  // ==========================================================
-
   {
     id: 36,
     difficulty: "medium",
@@ -663,11 +570,6 @@ const QUESTIONS = [
     explanation:
       "Les paramètres sont la vitesse maximale, la longueur du train, le coefficient de décélération et la classe du train.",
   },
-
-  // ==========================================================
-  // CA2P — VACMA
-  // ==========================================================
-
   {
     id: 37,
     difficulty: "easy",
@@ -683,7 +585,6 @@ const QUESTIONS = [
     correct: [0],
     explanation: "La VACMA contrôle l’état de conscience du conducteur.",
   },
-
   {
     id: 38,
     difficulty: "hard",
@@ -701,11 +602,6 @@ const QUESTIONS = [
     explanation:
       "Après environ 2,5 secondes, le son RA retentit ; sans réaction du conducteur, une nouvelle temporisation conduit aux opérations d’arrêt.",
   },
-
-  // ==========================================================
-  // CA2P — ARRÊTS
-  // ==========================================================
-
   {
     id: 39,
     difficulty: "easy",
@@ -722,7 +618,6 @@ const QUESTIONS = [
     explanation:
       "Les trois types sont les arrêts prévus, les arrêts par signaux d’un poste et les arrêts accidentels.",
   },
-
   {
     id: 40,
     difficulty: "medium",
@@ -739,11 +634,6 @@ const QUESTIONS = [
     explanation:
       "Un arrêt par signaux d’un poste peut être donné par un carré ou un sémaphore.",
   },
-
-  // ==========================================================
-  // EC11 — HISTOIRE DU RAIL
-  // ==========================================================
-
   {
     id: 41,
     difficulty: "medium",
@@ -761,7 +651,6 @@ const QUESTIONS = [
     explanation:
       "Le cours « Introduction — le rail » présente des ornières, puis des pierres, du bois et enfin du fer pour répondre notamment au problème d’usure.",
   },
-
   {
     id: 42,
     difficulty: "hard",
@@ -774,7 +663,6 @@ const QUESTIONS = [
     explanation:
       "Le repère à retenir est 1822 pour cette première ligne française de marchandises.",
   },
-
   {
     id: 43,
     difficulty: "easy",
@@ -791,7 +679,6 @@ const QUESTIONS = [
     explanation:
       "Le plan Freycinet est associé à un réseau de 16 000 km, dont 8 700 km de lignes d’intérêt local.",
   },
-
   {
     id: 44,
     difficulty: "medium",
@@ -809,7 +696,6 @@ const QUESTIONS = [
     explanation:
       "Une locomotive à vapeur associe le véhicule roulant, le foyer/chaudière et le mécanisme ou moteur à vapeur.",
   },
-
   {
     id: 45,
     difficulty: "easy",
@@ -829,7 +715,6 @@ const QUESTIONS = [
     explanation:
       "Le réseau français utilise principalement deux systèmes : 1 500 V continu et 25 kV alternatif.",
   },
-
   {
     id: 46,
     difficulty: "medium",
@@ -846,7 +731,6 @@ const QUESTIONS = [
     explanation:
       "Les rails peuvent aussi participer aux circuits de voie et au retour des courants électriques de traction et auxiliaires.",
   },
-
   {
     id: 47,
     difficulty: "easy",
@@ -863,7 +747,6 @@ const QUESTIONS = [
     explanation:
       "Un bogie est un chariot situé sous le véhicule, portant les essieux et permettant au véhicule de mieux négocier les courbes.",
   },
-
   {
     id: 48,
     difficulty: "hard",
@@ -881,7 +764,6 @@ const QUESTIONS = [
     explanation:
       "Ces quatre repères font partie des grandes dates ferroviaires à connaître.",
   },
-
   {
     id: 49,
     difficulty: "easy",
@@ -898,11 +780,6 @@ const QUESTIONS = [
     explanation:
       "Le 14 novembre 1994 correspond à la mise en service commercial du TGV Eurostar entre Paris et Londres.",
   },
-
-  // ==========================================================
-  // QUESTIONS COMPLÉMENTAIRES
-  // ==========================================================
-
   {
     id: 50,
     difficulty: "medium",
@@ -920,7 +797,6 @@ const QUESTIONS = [
     explanation:
       "Parmi les facteurs aggravants figurent notamment le manque d’expérience, la fatigue, l’excès de confiance, l’état de santé et les conditions atmosphériques.",
   },
-
   {
     id: 51,
     difficulty: "medium",
@@ -938,7 +814,6 @@ const QUESTIONS = [
     explanation:
       "Les délais de visibilité à retenir sont de 10 s pour 1–2 voies, 15 s pour 3–4 voies et 20 s pour 5–6 voies.",
   },
-
   {
     id: 52,
     difficulty: "medium",

@@ -1,48 +1,25 @@
 <!doctype html>
 <html lang="fr">
   <head>
-    <!-- =========================================================
-         CONFIGURATION DE LA PAGE
-         ========================================================= -->
-
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Cours ferroviaire — Révisions</title>
-
-    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-
-    <!-- Styles personnalisés -->
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <!-- =========================================================
-         BARRE DE NAVIGATION
-         ========================================================= -->
-
     <nav class="navbar navbar-dark bg-dark">
       <div class="container">
-        <!-- Nom du site -->
-        <a
-          class="navbar-brand fw-bold text-decoration-none"
-          href="index.html"
+        <a class="navbar-brand fw-bold text-decoration-none" href="index.html"
+          >Quiz ferroviaire</a
         >
-          Quiz ferroviaire
-        </a>
-
         <div class="d-flex align-items-center gap-2">
-          <!-- Texte affiché uniquement sur les écrans suffisamment larges -->
-          <span class="text-white-50 small d-none d-sm-inline">
-            Cours du DU ferroviaire
-          </span>
-
-          <!-- Bouton de changement de thème -->
-          <button
+          <span class="text-white-50 small d-none d-sm-inline"
+            >Cours du DU ferroviaire</span
+          ><button
             id="themeToggle"
             class="btn btn-sm btn-outline-light"
             type="button"
@@ -52,70 +29,30 @@
         </div>
       </div>
     </nav>
-
-    <!-- =========================================================
-         CONTENU PRINCIPAL
-         ========================================================= -->
-
     <main class="container py-4 course-page">
-      <!-- En-tête de la page -->
       <div
         class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4"
       >
         <div>
           <h1 class="h3 mb-1">📚 Cours</h1>
-
           <p class="text-secondary mb-0">
-            Choisis un thème. Un seul cours est affiché à la fois pour garder
-            la page lisible.
+            Choisis un thème. Un seul cours est affiché à la fois pour garder la
+            page lisible.
           </p>
         </div>
-
-        <!-- Boutons de navigation -->
         <div class="d-flex gap-2">
-          <a class="btn btn-outline-warning" href="fiches.html">
-            ⚡ Fiches express
-          </a>
-
-          <a class="btn btn-outline-secondary" href="index.html">
-            ← Retour au quiz
-          </a>
+          <a class="btn btn-outline-warning" href="fiches.html"
+            >⚡ Fiches express</a
+          ><a class="btn btn-outline-secondary" href="index.html"
+            >← Retour au quiz</a
+          >
         </div>
       </div>
-
-      <!-- =======================================================
-           LISTE DES COURS
-           ======================================================= -->
-
-      <!-- Cette zone contient la liste des différents thèmes -->
       <div id="courseHome"></div>
-
-      <!-- =======================================================
-           DÉTAIL DU COURS SÉLECTIONNÉ
-           ======================================================= -->
-
-      <!-- Cette zone remplace la liste lorsqu'un cours est ouvert -->
       <div id="courseDetail" class="d-none"></div>
     </main>
-
-    <!-- =========================================================
-         DONNÉES DES COURS
-         ========================================================= -->
-
     <script src="course.js"></script>
-
-    <!-- =========================================================
-         LOGIQUE DE LA PAGE DES COURS
-         ========================================================= -->
-
     <script>
-      /* ---------------------------------------------------------
-         ÉCHAPPEMENT DU HTML
-         ---------------------------------------------------------
-         Évite qu'un texte provenant des données des cours puisse
-         être interprété directement comme du HTML.
-         --------------------------------------------------------- */
-
       function escapeHtmlLocal(v) {
         return String(v).replace(
           /[&<>'"]/g,
@@ -129,239 +66,48 @@
             })[m],
         );
       }
-
-      /* ---------------------------------------------------------
-         RÉCUPÉRATION DES ÉLÉMENTS HTML
-         --------------------------------------------------------- */
-
-      const home = document.getElementById("courseHome");
-      const detail = document.getElementById("courseDetail");
-
-      /* ---------------------------------------------------------
-         AFFICHAGE DE LA LISTE DES COURS
-         --------------------------------------------------------- */
-
+      const home = document.getElementById("courseHome"),
+        detail = document.getElementById("courseDetail");
       function renderHome() {
-        home.innerHTML = `
-          <div class="row g-3">
-            ${COURSE.map(
-              (c) => `
-                <div class="col-12 col-md-6">
-                  <div class="card h-100 course-card">
-                    <div class="card-body">
-
-                      <div class="d-flex gap-3">
-                        <!-- Icône du thème -->
-                        <div class="course-icon">
-                          ${c.icon}
-                        </div>
-
-                        <!-- Titre et description -->
-                        <div>
-                          <h2 class="h5 mb-1">
-                            ${escapeHtmlLocal(c.title)}
-                          </h2>
-
-                          <p class="text-secondary small">
-                            ${escapeHtmlLocal(c.subtitle)}
-                          </p>
-                        </div>
-                      </div>
-
-                      <!-- Ouverture du cours -->
-                      <button
-                        class="btn btn-primary mt-3"
-                        onclick="openCourse('${c.id}')"
-                      >
-                        Ouvrir le cours →
-                      </button>
-
-                    </div>
-                  </div>
-                </div>
-              `,
-            ).join("")}
-          </div>
-        `;
+        home.innerHTML = `<div class="row g-3">${COURSE.map((c) => `<div class="col-12 col-md-6"><div class="card h-100 course-card"><div class="card-body"><div class="d-flex gap-3"><div class="course-icon">${c.icon}</div><div><h2 class="h5 mb-1">${escapeHtmlLocal(c.title)}</h2><p class="text-secondary small">${escapeHtmlLocal(c.subtitle)}</p></div></div><button class="btn btn-primary mt-3" onclick="openCourse('${c.id}')">Ouvrir le cours →</button></div></div></div>`).join("")}</div>`;
       }
-
-      /* ---------------------------------------------------------
-         OUVERTURE D'UN COURS
-         --------------------------------------------------------- */
-
       function openCourse(id) {
         const c = COURSE.find((x) => x.id === id);
-
-        // Si le thème demandé n'existe pas, on arrête la fonction.
         if (!c) return;
-
-        /* Met à jour l'URL afin de pouvoir accéder directement
-           au cours sélectionné. */
         history.replaceState(
           {},
           "",
           `cours.html?theme=${encodeURIComponent(id)}`,
         );
-
-        // Masque la liste des cours.
         home.classList.add("d-none");
-
-        // Affiche le cours sélectionné.
         detail.classList.remove("d-none");
-
-        /* -------------------------------------------------------
-           CONSTRUCTION DU CONTENU DU COURS
-           ------------------------------------------------------- */
-
-        detail.innerHTML = `
-          <!-- En-tête du cours -->
-          <div
-            class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"
-          >
-            <div>
-              <h2 class="h3 mb-1">
-                ${c.icon} ${escapeHtmlLocal(c.title)}
-              </h2>
-
-              <p class="text-secondary mb-0">
-                ${escapeHtmlLocal(c.subtitle)}
-              </p>
-            </div>
-
-            <!-- Retour à la liste des cours -->
-            <button
-              class="btn btn-outline-secondary"
-              onclick="showCourseHome()"
-            >
-              ← Tous les cours
-            </button>
-          </div>
-
-          <!-- Contenu des différentes parties du cours -->
-          <div class="course-reading">
-            ${c.sections
-              .map(
-                (s, i) => `
-                  <section class="course-section card border mb-3">
-                    <div class="card-body">
-
-                      <h3 class="h5">
-                        ${i + 1}.
-                        ${escapeHtmlLocal(
-                          s.title.replace(/^\d+\.\s*/, ""),
-                        )}
-                      </h3>
-
-                      <!-- Points importants de la section -->
-                      <ul>
-                        ${s.bullets
-                          .map(
-                            (b) => `
-                              <li>
-                                ${escapeHtmlLocal(b)}
-                              </li>
-                            `,
-                          )
-                          .join("")}
-                      </ul>
-
-                      <!-- Élément à retenir -->
-                      <div class="course-key">
-                        <strong>🎯 À retenir :</strong>
-                        ${escapeHtmlLocal(s.key)}
-                      </div>
-
-                    </div>
-                  </section>
-                `,
-              )
-              .join("")}
-          </div>
-        `;
-
-        // Retour en haut de page lors de l'ouverture d'un cours.
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+        detail.innerHTML = `<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"><div><h2 class="h3 mb-1">${c.icon} ${escapeHtmlLocal(c.title)}</h2><p class="text-secondary mb-0">${escapeHtmlLocal(c.subtitle)}</p></div><button class="btn btn-outline-secondary" onclick="showCourseHome()">← Tous les cours</button></div><div class="course-reading">${c.sections.map((s, i) => `<section class="course-section card border mb-3"><div class="card-body"><h3 class="h5">${i + 1}. ${escapeHtmlLocal(s.title.replace(/^\d+\.\s*/, ""))}</h3><ul>${s.bullets.map((b) => `<li>${escapeHtmlLocal(b)}</li>`).join("")}</ul><div class="course-key"><strong>🎯 À retenir :</strong> ${escapeHtmlLocal(s.key)}</div></div></section>`).join("")}</div>`;
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-
-      /* ---------------------------------------------------------
-         RETOUR À LA LISTE DES COURS
-         --------------------------------------------------------- */
-
       function showCourseHome() {
-        // Réinitialise l'URL.
         history.replaceState({}, "", "cours.html");
-
-        // Masque le cours actuellement ouvert.
         detail.classList.add("d-none");
-
-        // Réaffiche la liste des cours.
         home.classList.remove("d-none");
-
-        // Retour en haut de page.
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-
-      /* ---------------------------------------------------------
-         OUVERTURE DIRECTE D'UN THÈME VIA L'URL
-         --------------------------------------------------------- */
-
       const params = new URLSearchParams(location.search);
       const theme = params.get("theme");
-
-      if (theme && COURSE.some((c) => c.id === theme)) {
-        // Un thème valide est indiqué dans l'URL.
-        openCourse(theme);
-      } else {
-        // Aucun thème valide : affichage de la liste des cours.
-        renderHome();
-      }
-
-      /* =========================================================
-         GESTION DU MODE CLAIR / SOMBRE
-         ========================================================= */
-
+      if (theme && COURSE.some((c) => c.id === theme)) openCourse(theme);
+      else renderHome();
       function applyTheme() {
-        // Récupère l'état du mode sombre enregistré.
         const dark = localStorage.getItem("quizDarkMode") === "1";
-
-        // Applique le thème Bootstrap.
         document.documentElement.setAttribute(
           "data-bs-theme",
           dark ? "dark" : "light",
         );
-
-        // Met à jour l'icône du bouton.
         const b = document.getElementById("themeToggle");
-
-        if (b) {
-          b.textContent = dark ? "☀️" : "🌙";
-        }
+        if (b) b.textContent = dark ? "☀️" : "🌙";
       }
-
-      /* ---------------------------------------------------------
-         BOUTON DE CHANGEMENT DE THÈME
-         --------------------------------------------------------- */
-
       document.getElementById("themeToggle").onclick = () => {
         const dark = localStorage.getItem("quizDarkMode") === "1";
-
-        // Inverse l'état actuel.
         localStorage.setItem("quizDarkMode", dark ? "0" : "1");
-
-        // Applique immédiatement le nouveau thème.
         applyTheme();
       };
-
-      /* ---------------------------------------------------------
-         APPLICATION INITIALE DU THÈME
-         --------------------------------------------------------- */
-
       applyTheme();
     </script>
   </body>
