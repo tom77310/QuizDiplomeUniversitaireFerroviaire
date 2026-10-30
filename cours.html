@@ -1,147 +1,55 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Cours ferroviaire — Révisions</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand fw-bold text-decoration-none" href="index.html"
-          >Quiz ferroviaire</a
-        >
-        <div class="d-flex align-items-center gap-2">
-          <span class="text-white-50 small d-none d-sm-inline"
-            >Cours du DU ferroviaire</span
-          ><button
-            id="themeToggle"
-            class="btn btn-sm btn-outline-light"
-            type="button"
-          >
-            🌙
-          </button>
-        </div>
-      </div>
-    </nav>
-    <main class="container py-4 course-page">
-      <div
-        class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4"
-      >
-        <div>
-          <h1 class="h3 mb-1">📚 Cours</h1>
-          <p class="text-secondary mb-0">
-            Choisis un thème. Un seul cours est affiché à la fois pour garder la
-            page lisible.
-          </p>
-        </div>
-        <div class="d-flex gap-2">
-          <a class="btn btn-outline-warning" href="fiches.html"
-            >⚡ Fiches express</a
-          ><a class="btn btn-outline-secondary" href="quiz.html"
-            >← Retour au quiz</a
-          ><a class="btn btn-outline-primary" href="index.html">🏠 Accueil</a>
-        </div>
-      </div>
-      <div class="course-tools card border mb-4">
-        <div class="card-body">
-          <label for="courseSearch" class="form-label fw-semibold"
-            >🔎 Rechercher dans les cours</label
-          >
-          <input
-            id="courseSearch"
-            class="form-control"
-            type="search"
-            placeholder="Ex. KVB, caténaire, sécurité..."
-            autocomplete="off"
-          />
-          <p class="small text-secondary mt-2 mb-0">
-            La recherche filtre les thèmes disponibles sans modifier le contenu
-            des cours.
-          </p>
-        </div>
-      </div>
-      <div id="courseHome"></div>
-      <div id="courseDetail" class="d-none"></div>
-      <button
-        id="backToTopBtn"
-        class="back-to-top"
-        type="button"
-        aria-label="Retour en haut"
-      >
-        ↑
-      </button>
-    </main>
-    <script src="course.js"></script>
-    <script src="enhancements.js"></script>
-    <script>
-      function escapeHtmlLocal(v) {
-        return String(v).replace(
-          /[&<>'"]/g,
-          (m) =>
-            ({
-              "&": "&amp;",
-              "<": "&lt;",
-              ">": "&gt;",
-              "'": "&#39;",
-              '"': "&quot;",
-            })[m],
-        );
-      }
-      const home = document.getElementById("courseHome"),
-        detail = document.getElementById("courseDetail");
-      function renderHome() {
-        home.innerHTML = `<div class="row g-3">${COURSE.map((c) => `<div data-course-card class="col-12 col-md-6"><div class="card h-100 course-card"><div class="card-body"><div class="d-flex gap-3"><div class="course-icon">${c.icon}</div><div><h2 class="h5 mb-1">${escapeHtmlLocal(c.title)}</h2><p class="text-secondary small">${escapeHtmlLocal(c.subtitle)}</p></div></div><button class="btn btn-primary mt-3" onclick="openCourse('${c.id}')">Ouvrir le cours →</button></div></div></div>`).join("")}</div>`;
-      }
-      function openCourse(id) {
-        const c = COURSE.find((x) => x.id === id);
-        if (!c) return;
-        history.replaceState(
-          {},
-          "",
-          `cours.html?theme=${encodeURIComponent(id)}`,
-        );
-        home.classList.add("d-none");
-        detail.classList.remove("d-none");
-        detail.innerHTML = `<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"><div><h2 class="h3 mb-1">${c.icon} ${escapeHtmlLocal(c.title)}</h2><p class="text-secondary mb-0">${escapeHtmlLocal(c.subtitle)}</p></div><div class="d-flex gap-2 flex-wrap"><button id="printCourseBtn" class="btn btn-outline-success" type="button" onclick="window.print()">🖨️ Imprimer le cours</button><button class="btn btn-outline-secondary" onclick="showCourseHome()">← Tous les cours</button></div></div><div class="print-meta"><strong>${escapeHtmlLocal(c.title)}</strong><span>Imprimé le ${new Date().toLocaleDateString("fr-FR")}</span></div><div class="course-reading">${c.sections.map((s, i) => `<section class="course-section card border mb-3"><div class="card-body"><h3 class="h5">${i + 1}. ${escapeHtmlLocal(s.title.replace(/^\d+\.\s*/, ""))}</h3><ul>${s.bullets.map((b) => `<li>${escapeHtmlLocal(b)}</li>`).join("")}</ul><div class="course-key"><strong>🎯 À retenir :</strong> ${escapeHtmlLocal(s.key)}</div></div></section>`).join("")}</div>`;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-      function showCourseHome() {
-        // Retour à la liste complète : on réinitialise aussi la recherche pour
-        // éviter de revenir sur une liste encore filtrée.
-        const search = document.getElementById("courseSearch");
-        if (search) search.value = "";
-        if (typeof window.filterCourseCards === "function")
-          window.filterCourseCards("");
-        history.replaceState({}, "", "cours.html");
-        detail.classList.add("d-none");
-        home.classList.remove("d-none");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-      const params = new URLSearchParams(location.search);
-      const theme = params.get("theme");
-      if (theme && COURSE.some((c) => c.id === theme)) openCourse(theme);
-      else renderHome();
-      function applyTheme() {
-        const dark = localStorage.getItem("quizDarkMode") === "1";
-        document.documentElement.setAttribute(
-          "data-bs-theme",
-          dark ? "dark" : "light",
-        );
-        const b = document.getElementById("themeToggle");
-        if (b) b.textContent = dark ? "☀️" : "🌙";
-      }
-      document.getElementById("themeToggle").onclick = () => {
-        const dark = localStorage.getItem("quizDarkMode") === "1";
-        localStorage.setItem("quizDarkMode", dark ? "0" : "1");
-        applyTheme();
-      };
-      applyTheme();
-    </script>
-  </body>
-</html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cours ferroviaire — Révisions</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark"><div class="container"><a class="navbar-brand fw-bold text-decoration-none" href="index.html">Quiz ferroviaire</a><div class="d-flex align-items-center gap-2"><span class="text-white-50 small d-none d-sm-inline">Cours du DU ferroviaire</span><button id="themeToggle" class="btn btn-sm btn-outline-light" type="button">🌙</button></div></div></nav>
+<main class="container py-4 course-page">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+    <div><h1 class="h3 mb-1">📚 Cours</h1><p class="text-secondary mb-0">Choisis un thème. Un seul cours est affiché à la fois pour garder la page lisible.</p></div>
+    <div class="d-flex gap-2"><a class="btn btn-outline-warning" href="fiches.html">⚡ Fiches express</a><a class="btn btn-outline-secondary" href="quiz.html">← Retour au quiz</a><a class="btn btn-outline-primary" href="index.html">🏠 Accueil</a></div>
+  </div>
+  <div class="course-tools card border mb-4">
+    <div class="card-body">
+      <label for="courseSearch" class="form-label fw-semibold">🔎 Rechercher dans les cours</label>
+      <input id="courseSearch" class="form-control" type="search" placeholder="Ex. KVB, caténaire, sécurité..." autocomplete="off">
+      <p class="small text-secondary mt-2 mb-0">La recherche filtre les thèmes disponibles sans modifier le contenu des cours.</p>
+    </div>
+  </div>
+  <div id="courseHome"></div>
+  <div id="courseDetail" class="d-none"></div>
+<button id="backToTopBtn" class="back-to-top" type="button" aria-label="Retour en haut">↑</button>
+</main>
+<script src="course.js"></script><script src="enhancements.js"></script>
+<script>
+function escapeHtmlLocal(v){return String(v).replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));}
+const home=document.getElementById('courseHome'), detail=document.getElementById('courseDetail');
+function renderHome(){
+ home.innerHTML=`<div class="row g-3">${COURSE.map(c=>`<div data-course-card class="col-12 col-md-6"><div class="card h-100 course-card"><div class="card-body"><div class="d-flex gap-3"><div class="course-icon">${c.icon}</div><div><h2 class="h5 mb-1">${escapeHtmlLocal(c.title)}</h2><p class="text-secondary small">${escapeHtmlLocal(c.subtitle)}</p></div></div><button class="btn btn-primary mt-3" onclick="openCourse('${c.id}')">Ouvrir le cours →</button></div></div></div>`).join('')}</div>`;
+}
+function openCourse(id){
+ const c=COURSE.find(x=>x.id===id); if(!c)return;
+ history.replaceState({},'',`cours.html?theme=${encodeURIComponent(id)}`);
+ home.classList.add('d-none'); detail.classList.remove('d-none');
+ detail.innerHTML=`<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"><div><h2 class="h3 mb-1">${c.icon} ${escapeHtmlLocal(c.title)}</h2><p class="text-secondary mb-0">${escapeHtmlLocal(c.subtitle)}</p></div><div class="d-flex gap-2 flex-wrap"><button id="printCourseBtn" class="btn btn-outline-success" type="button" onclick="window.print()">🖨️ Imprimer le cours</button><button class="btn btn-outline-secondary" onclick="showCourseHome()">← Tous les cours</button></div></div><div class="print-meta"><strong>${escapeHtmlLocal(c.title)}</strong><span>Imprimé le ${new Date().toLocaleDateString('fr-FR')}</span></div><div class="course-reading">${c.sections.map((s,i)=>`<section class="course-section card border mb-3"><div class="card-body"><h3 class="h5">${i+1}. ${escapeHtmlLocal(s.title.replace(/^\d+\.\s*/,''))}</h3><ul>${s.bullets.map(b=>`<li>${escapeHtmlLocal(b)}</li>`).join('')}</ul><div class="course-key"><strong>🎯 À retenir :</strong> ${escapeHtmlLocal(s.key)}</div></div></section>`).join('')}</div>`;
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function showCourseHome(){
+  // Retour à la liste complète : on réinitialise aussi la recherche pour
+  // éviter de revenir sur une liste encore filtrée.
+  const search = document.getElementById('courseSearch');
+  if (search) search.value = '';
+  if (typeof window.filterCourseCards === 'function') window.filterCourseCards('');
+  history.replaceState({}, '', 'cours.html');
+  detail.classList.add('d-none');
+  home.classList.remove('d-none');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const params=new URLSearchParams(location.search); const theme=params.get('theme'); if(theme&&COURSE.some(c=>c.id===theme))openCourse(theme); else renderHome();
+function applyTheme(){const dark=localStorage.getItem('quizDarkMode')==='1';document.documentElement.setAttribute('data-bs-theme',dark?'dark':'light');document.documentElement.classList.toggle('dark-mode',dark);document.body.classList.toggle('dark-mode',dark);const b=document.getElementById('themeToggle');if(b)b.textContent=dark?'☀️':'🌙'}document.getElementById('themeToggle').onclick=()=>{const dark=localStorage.getItem('quizDarkMode')==='1';localStorage.setItem('quizDarkMode',dark?'0':'1');applyTheme()};applyTheme();
+</script>
+</body></html>

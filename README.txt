@@ -1,7 +1,7 @@
 QUIZ FERROVIAIRE — RÉVISIONS DU FERROVIAIRE
 =============================================
 
-Version actuelle : V15
+Version actuelle : V20.2.3
 
 Projet local de révision destiné à accompagner la préparation du DU ferroviaire.
 Le site fonctionne côté navigateur, sans serveur ni base de données.
@@ -20,15 +20,15 @@ quiz.html
   sauvegarde.
 
 cours.html
-  Page dédiée aux cours structurés par thème, avec recherche et navigation
-  rapide entre les thèmes.
+  Page dédiée aux cours structurés par thème, avec recherche, consultation et
+  impression des cours.
 
 fiches.html
   Page dédiée aux fiches de révision express, avec possibilité d'impression
   ou d'enregistrement en PDF depuis la fonction d'impression du navigateur.
 
 questions.js
-  Banque des 52 questions du quiz et leurs réponses.
+  Banque des 109 questions du quiz et leurs réponses.
 
 course.js
   Contenu des cours, des fiches de révision et des badges.
@@ -89,7 +89,7 @@ QUESTIONS À REVOIR AUTOMATIQUEMENT
     dédiée sans devoir configurer manuellement un thème.
 
 QUESTIONS
-  - 52 questions actuellement intégrées.
+  - 109 questions actuellement intégrées.
   - Questions organisées par thèmes ferroviaires.
   - Correction immédiate en mode Révision.
   - Feedback associé aux réponses.
@@ -103,17 +103,13 @@ CORRECTIONS ENRICHIES
   - La correction rappelle la réponse attendue.
   - Une explication pédagogique est affichée.
   - Une section « À retenir » apporte un rappel complémentaire.
-  - Lorsqu'une question est liée à un thème de cours connu, un bouton permet
-    d'ouvrir directement le cours associé.
-  - Les erreurs affichées dans le bilan contiennent également le lien vers la
-    notion à revoir dans le cours.
 
 MODES DE JEU
   - Révision : entraînement classique avec correction.
   - Examen : durée limitée et fonctionnement spécifique de fin d'épreuve.
   - Simulation examen : entraînement dans des conditions proches de l'examen.
-  - Sur la dernière question d'un examen, « Terminer l'examen » remplace
-    « Valider ».
+  - Sur la dernière question, quel que soit le mode, « Terminer le quiz »
+    remplace « Question suivante » après validation.
   - Si la dernière réponse n'est pas encore validée, le bouton final valide
     d'abord la réponse avant de terminer la session.
 
@@ -122,7 +118,6 @@ RÉSULTATS
   - Nombre d'erreurs.
   - Possibilité de revoir les erreurs.
   - Bilan détaillé des points forts et des thèmes à retravailler.
-  - Accès direct au cours associé aux erreurs.
   - Possibilité de recommencer ou de modifier les paramètres.
 
 HISTORIQUE ET PROGRESSION
@@ -385,3 +380,72 @@ V18 — Confort et gestion des révisions
 
 V19 — Correction impression des cours
 - Correction du bouton « Imprimer le cours » : le bouton est généré dynamiquement lors de l’ouverture d’un cours et déclenche maintenant directement la boîte d’impression du navigateur.
+
+
+===== V20 — Intégration des premiers cours SECUFER =====
+- Intégration des contenus écrits fournis pour EC 21-1 Généralités, EC 21-2 Cheminement/Traversées et EC 21-2 Risques électriques.
+- Les vidéos ont été considérées uniquement à partir de leur contenu écrit/affiché, sans utiliser leur bande audio.
+- Mise à jour des fiches express Sécurité, Voies & traversées et Risque électrique.
+- Ajout de nouvelles questions de quiz issues des supports et de la banque de questions fournie.
+- Conservation des fonctionnalités d'impression des cours et des fiches.
+- Commentaires ajoutés dans les fichiers concernés pour faciliter les modifications dans VS Code.
+
+
+===== V20.1 — Intégration des cours Signaux / EC31 / EC32 =====
+- Ajout des cours EC31 sur les 5 risques ferroviaires, les régimes d’exploitation et l’exploitation/cantonnement.
+- Ajout du cours EC32 sur les principes de signalisation, l’identification des signaux, les signaux de protection et d’annonce, la marche à vue et la VISA.
+- Ajout de fiches express correspondantes.
+- Ajout de nouvelles questions de quiz issues des supports écrits transmis.
+- Les supports vidéo ont été considérés uniquement pour leur contenu écrit/affiché ; aucune information provenant de l’audio n’a été intégrée.
+- Commentaires ajoutés dans les zones de code concernées pour faciliter la maintenance dans VS Code.
+- Conservation de toutes les fonctionnalités de la V20, notamment l’impression des cours et fiches.
+
+
+===== V20.2 — Regroupement des thèmes dans les menus =====
+- Regroupement des thèmes en catégories plus lisibles dans le choix du quiz.
+- Les doublons de libellés liés aux variantes d’écriture des thèmes (notamment EC 21-1 / EC 21-2) sont réunis.
+- Les différents thèmes « Risques électriques » sont regroupés dans une seule sélection.
+- Les thèmes liés à l’exploitation et au cantonnement sont regroupés.
+- Les thèmes de signalisation sont regroupés, notamment EC32 et CA2P.
+- Les thèmes CA2P Frein, KVB, VACMA et Arrêts sont regroupés dans « Conduite & systèmes ».
+- La même organisation est utilisée dans l’entraînement ciblé.
+- Le regroupement agit uniquement sur les menus : les thèmes d’origine des questions sont conservés.
+- Commentaires ajoutés dans le code pour expliquer le fonctionnement du regroupement.
+
+===== V20.2.3 — Corrections et confort du quiz =====
+- Suppression des formulations qui renvoyaient au support ou au cours dans les questions et corrections.
+- Refonte des indices : chaque question dispose d’un indice réellement orienté vers la notion à identifier, la valeur à retrouver ou le raisonnement à appliquer.
+- Refonte des corrections : l’explication est séparée du point « À retenir », avec un rappel spécifique à chaque question.
+- Sur la dernière question, tous modes confondus, le bouton final est « Terminer le quiz » et non « Question suivante ».
+- Sur mobile, « Commencer le quiz » est placé juste avant « Commencer la série ».
+- Correction du mode clair : le double gestionnaire du bouton de thème provoquait un double basculement et empêchait le retour effectif au mode clair.
+- Commentaires conservés dans les fichiers concernés pour faciliter la maintenance dans VS Code.
+
+
+V20.2.3 — Correctif lancement du quiz
+- Correction du remplissage et du filtrage des thèmes regroupés.
+- Initialisation sécurisée des boutons pour empêcher une erreur secondaire de bloquer le lancement du quiz.
+- Le bouton « Commencer le quiz » reste fonctionnel même si une fonction optionnelle rencontre une erreur.
+- Normalisation des noms de thèmes pour fiabiliser le regroupement.
+
+
+V20.2.4 — Correction définitive du menu des thèmes
+- Les 7 thèmes regroupés sont désormais présents directement dans quiz.html.
+- Le JavaScript ne vide plus le menu au chargement.
+- Le lancement du quiz reste possible même si une fonction secondaire rencontre une erreur.
+- Compatibilité renforcée avec les anciennes valeurs de thèmes conservées dans les données locales.
+
+V20.2.5 — correction robuste du lancement et du thème
+- Le lancement du quiz est exposé explicitement et dispose d'un branchement de secours.
+- Le bouton de mode sombre dispose également d'un branchement de secours.
+- Le thème est appliqué immédiatement au chargement pour éviter le retour en mode clair.
+- Les scripts locaux utilisent un numéro de version pour éviter les problèmes de cache du navigateur.
+- Les fonctions de confort existantes sont conservées.
+
+
+V20.2.6 — Correction du lancement du quiz
+- Correction d'une fonction manquante (getStatsResetAt) qui empêchait le lancement du quiz.
+- Le mélange intelligent des questions et le suivi des statistiques refonctionnent.
+- Aucun changement à la banque de questions ni aux thèmes regroupés.
+
+V20.2.7 — Correction ciblée du mode sombre : styles désormais pilotés aussi depuis html.dark-mode afin de rester indépendants de l’initialisation du quiz. Aucun fonctionnement du quiz modifié.
